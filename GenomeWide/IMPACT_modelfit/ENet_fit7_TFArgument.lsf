@@ -1,0 +1,8 @@
+#!/bin/bash
+#BSUB -q big
+#BSUB -n 4
+#BSUB -R rusage[mem=100000]
+
+module load R/3.2.2
+TF=HES1
+Rscript --verbose ENet_fit7_TFArgument.R $TF > ENet_fit7_TFArgument_${TF}.Rout

@@ -1,0 +1,10 @@
+
+#!/bin/bash
+#BSUB -q big
+#BSUB -n 4
+#BSUB -R rusage[mem=100000]
+
+module load R/3.2.2
+TF=Stat4
+Rscript --verbose MinMaxValues_TFarg.R $TF > MinMaxValues_TFarg_${TF}.Rout
+

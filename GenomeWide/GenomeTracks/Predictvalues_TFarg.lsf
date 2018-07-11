@@ -1,0 +1,10 @@
+
+#!/bin/bash
+#BSUB -q big
+#BSUB -n 4
+#BSUB -R rusage[mem=200000]
+
+module load R/3.2.2
+TF=HES1
+Rscript --verbose Predictvalues_TFarg.R $TF > Predictvalues_TFarg_${TF}.Rout
+
