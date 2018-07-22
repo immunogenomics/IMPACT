@@ -1,10 +1,15 @@
-IMPACT (Inference and Modeling of Phenotype-related ACtive Transcription) 
+# IMPACT (Inference and Modeling of Phenotype-related ACtive Transcription) 
 
-A method to predict cell-state-specific regulatory elements. 
+A data aggegation strategy to model specific transcriptional processes based on transcription factor and cell-state specificity. 
 
-Biorxiv preprint: https://www.biorxiv.org/content/early/2018/07/10/366864
+## Biorxiv preprint
+```
+https://www.biorxiv.org/content/early/2018/07/10/366864
+```
 
-Directory Contents: 
+## Using IMPACT 
+
+### Directory Contents: 
 
 
 Data: 
