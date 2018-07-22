@@ -14,7 +14,7 @@ A data aggegation strategy to model specific transcriptional processes based on 
 
 Transcription factor binding motif PWMs (position weight matrices) and genome-wide positions of motifs 
 ```
-Motif/ 
+Motifs/ 
 ```
 
 Epigenomic and sequence features used in the IMPACT framework to predict cell-state-specific regulatory elements. 
