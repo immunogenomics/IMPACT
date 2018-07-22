@@ -7,10 +7,10 @@ A data aggegation strategy to model specific transcriptional processes based on 
 
 ## Using IMPACT 
 
-### Directory Contents 
 
 
-#### Data 
+
+### Data 
 
 Transcription factor binding motif PWMs (position weight matrices) and genome-wide positions of motifs 
 ```
@@ -22,7 +22,7 @@ Epigenomic and sequence features used in the IMPACT framework to predict cell-st
 Features/ 
 ```
 
-#### Implementing IMPACT 
+### Implementing IMPACT 
 1. Create positive (regulatory) and negative (non-regulatory) training sets:
 ```
 Training/ Pipeline.sh "TF" "cell type" "number input (ChIP-seq) files"
@@ -58,7 +58,7 @@ GenomeWide/ldsc/CreateAnnotations_TFarg.R "TF"
 sLDSC/ 
 ```
 
-#### Assessing IMPACT performance: 
+### Assessing IMPACT performance: 
 
 Compute AUC and sensitivity of IMPACT to predict TF binding of a motif:
 ```
