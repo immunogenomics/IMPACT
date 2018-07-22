@@ -30,27 +30,27 @@ Training/ Pipeline.sh "TF" "cell type" "number input (ChIP-seq) files"
 
 2. Run model on a per-TF basis, to get betas on epigenomic and sequence features:
 ```
-GenomeWide/IMPACT_modelfit/ENet_fit7_TFArgument.R
+GenomeWide/IMPACT_modelfit/ENet_fit7_TFArgument.R "TF"
 ```
 
 3. Predict cell-state-specific regulatory elements genomewide based on model fits: 
 ```
-GenomeWide/GenomeTracks/Predictvalues_TFarg.R 
+GenomeWide/GenomeTracks/Predictvalues_TFarg.R "TF"
 ```
 
 4. Then compute minimum and maximum values per chromosome:
 ```
-GenomeWide/GenomeTracks/MinMaxValues_TFarg.R 
+GenomeWide/GenomeTracks/MinMaxValues_TFarg.R "TF"
 ```
 
 5. Finally, scale logistic regression output to be between 0 and 1: 
 ```
-GenomeWide/GenomeTracks/Scale_TFarg.R 
+GenomeWide/GenomeTracks/Scale_TFarg.R "TF"
 ```
 
 6. Create IMPACT annotations formatted to be run through S-LDSC to compute heritability estimates:
 ```
-GenomeWide/ldsc/CreateAnnotations_TFarg.R 
+GenomeWide/ldsc/CreateAnnotations_TFarg.R "TF"
 ```
 
 7. Run S-LDSC in European and East Asian populations: 
@@ -58,7 +58,7 @@ GenomeWide/ldsc/CreateAnnotations_TFarg.R
 sLDSC/ 
 ```
 
-8. Assessing IMPACT performance: 
+#### Assessing IMPACT performance: 
 
 Compute AUC and sensitivity of IMPACT to predict TF binding of a motif:
 ```
