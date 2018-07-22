@@ -3,8 +3,12 @@
 #BSUB -q big
 #BSUB -n 4
 #BSUB -R rusage[mem=200000]
+#BSUB -J "myArray[1-24]" myJob
+#BSUB -o /data/srlab/amariuta/jobs/ClassiferRegMap/Fig1/GenomeWide/GenomeTracks/job.out
 
 module load R/3.2.2
-TF=HES1
-Rscript --verbose Predictvalues_TFarg.R $TF > Predictvalues_TFarg_${TF}.Rout
+TF=Stat4
+Rscript --verbose Predictvalues_TFarg.R $TF $LSB_JOBINDEX > Predictvalues_TFarg_${chr}_${TF}.Rout
+
+
 

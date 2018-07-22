@@ -30,6 +30,7 @@ Fill.Classifier.Binary.SNPs <- function(my_Granges, datasets, chromosome){
 load("../IMPACT_modelfit/Features.Rdata")
 print("loaded features")
 TFs <- args[1]
+chrom <- args[2]
 numTFs <- length(TFs) 
 load(paste0("../IMPACT_modelfit/IMPACT_model_fits_7_",TFs,".RData")) #only models here, no other variables. was 2
 print("loaded model fits")
@@ -56,7 +57,7 @@ for (mtf in 1:numTFs){ #watch out for variables saved in Rdata files overwriting
 	#now decide which features we actually care about, each model has an intercept, is conservation beta pushed to zero for each model? usually
         #shift w by 2 and remove 1 for intercept 
 
-	for (chrom in 1:length(chromosomes)){
+	#for (chrom in 1:length(chromosomes)){
 		mychromosome <- paste0("chr",chromosomes[chrom])
 		print(mychromosome)
 		load(paste0(mychromosome,"_bedfile.RData"))	
@@ -87,9 +88,32 @@ for (mtf in 1:numTFs){ #watch out for variables saved in Rdata files overwriting
 		dataList_local <- Fill.Classifier.Binary.SNPs(test_bed_1_Granges, local_datasets, chromosome = mychromosome)
 		}else{dataList_local <- NULL
                 local_betas <- NULL}
+	
 		if (length(regional_datasets)>0){
-		dataList_up <- Fill.Classifier.Binary.SNPs(test_bed_1_Granges, regional_datasets, chromosome = mychromosome)
-		dataList_down <- Fill.Classifier.Binary.SNPs(test_bed_1_Granges, regional_datasets, chromosome = mychromosome)
+		
+
+		regdist <- 1000
+                hg19_sizes <- read.table("hg19.sizes", sep = "\t", header = F, stringsAsFactors = FALSE)
+                chrmax <- hg19_sizes[match(mychromosome, hg19_sizes[,1]),2]
+                #bug fix: need to make a test_bed_1_Granges upstream and downstream version and test accordingly
+                #we know that genome resolution is 3 bp, so we know which of the bedfile rows will be less than 1000, or more than the length 
+                #of the chr when adding the reg region
+                test_bed_1_Granges_up <- test_bed_1_Granges
+                start(test_bed_1_Granges_up)[1:(ceiling(regdist/3))] <- 0
+                start(test_bed_1_Granges_up)[(ceiling(regdist/3)):length(test_bed_1_Granges_up)] <- start(test_bed_1_Granges_up)[(ceiling(regdist/3)):length(test_bed_1_Granges_up)]-regdist
+                end(test_bed_1_Granges_up) <- start(test_bed_1_Granges_up) + 1
+
+                test_bed_1_Granges_down <- test_bed_1_Granges
+                end(test_bed_1_Granges_down)[(length(test_bed_1_Granges_down) - ceiling(regdist/3)):length(test_bed_1_Granges_down)] <- chrmax
+                end(test_bed_1_Granges_down)[1:(length(test_bed_1_Granges_down) - floor(regdist/3))] <- end(test_bed_1_Granges_down)[1:(length(test_bed_1_Granges_down) - floor(regdist/3))] + regdist
+                start(test_bed_1_Granges_down) <- end(test_bed_1_Granges_down) - 1
+                #where 3 is the basepair resolution.            
+                #check granges object is good to go: which(end(test_bed_1_Granges_up) - start(test_bed_1_Granges_up) <= 0)
+                #which(end(test_bed_1_Granges_down) - start(test_bed_1_Granges_down) <= 0)
+		
+
+		dataList_up <- Fill.Classifier.Binary.SNPs(test_bed_1_Granges_up, regional_datasets, chromosome = mychromosome)
+		dataList_down <- Fill.Classifier.Binary.SNPs(test_bed_1_Granges_down, regional_datasets, chromosome = mychromosome)
 		dataList_distal <- dataList_up + dataList_down
                 dataList_distal[dataList_distal>=1] <- 1
 		}else{dataList_distal <- NULL
@@ -109,7 +133,7 @@ for (mtf in 1:numTFs){ #watch out for variables saved in Rdata files overwriting
   		close(gz1)
 
 		
-}
+#}
 }
 
 
