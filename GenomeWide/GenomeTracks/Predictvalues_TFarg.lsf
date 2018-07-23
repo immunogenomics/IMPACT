@@ -7,8 +7,8 @@
 #BSUB -o /data/srlab/amariuta/jobs/ClassiferRegMap/Fig1/GenomeWide/GenomeTracks/job.out
 
 module load R/3.2.2
-TF=Stat4
-Rscript --verbose Predictvalues_TFarg.R $TF $LSB_JOBINDEX > Predictvalues_TFarg_${chr}_${TF}.Rout
+TF=Foxp3
+Rscript --verbose Predictvalues_TFarg.R ${TF},${LSB_JOBINDEX} > Predictvalues_TFarg_${LSB_JOBINDEX}_${TF}.Rout
 
 
 

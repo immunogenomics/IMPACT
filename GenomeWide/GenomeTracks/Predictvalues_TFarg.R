@@ -27,10 +27,14 @@ Fill.Classifier.Binary.SNPs <- function(my_Granges, datasets, chromosome){
   return(classifier_test)
 }
 
+TFs <- strsplit(args,split = ",")[[1]][1]
+print(TFs)
+chrom <- as.numeric(strsplit(args,split = ",")[[1]][2])
+print(chrom)
+
 load("../IMPACT_modelfit/Features.Rdata")
 print("loaded features")
-TFs <- args[1]
-chrom <- args[2]
+
 numTFs <- length(TFs) 
 load(paste0("../IMPACT_modelfit/IMPACT_model_fits_7_",TFs,".RData")) #only models here, no other variables. was 2
 print("loaded model fits")
