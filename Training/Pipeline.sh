@@ -6,10 +6,9 @@ module load R/3.2.2
 scanGenome=2 #1- need to scan genome for motifs, 2- files already made
 createannotations=2 #1- need to create annotations, 2-don't need to
 makemotifs=1 #1- need to make .motif files, 2- don't need to
+#in current IMPACT, we only search for 1 motif per annotation. script may handle > 1 motif (for multiple TF IMPACT annotations). 
 
 Rscript Step1_InputChIPandFeatures.R $1 $2 $3
-
-cp scanMotifsgenomewide.${1}_${2}.15000.sort.txt scanMotifsgenomewide.1.15000.sort.txt
 
 if [ $makemotifs -eq 1 ]
 	then
@@ -37,7 +36,7 @@ num_lines=15000
 
 if [ $scanGenome -eq 1 ]
 	then
-	for i in $(seq 1 $num_motifs);
+	for i in $(seq 1 $num_motifs); 
 	do
 	perl /data/srlab/amariuta/homer/bin/scanMotifGenomeWide.pl TF.$i.PWM.motif hg19 > scanMotifsgenomewide.$i.txt
 	sort -t $'\t' -k6,6rn scanMotifsgenomewide.$i.txt > scanMotifsgenomewide.$i.sort.txt	
@@ -45,6 +44,10 @@ if [ $scanGenome -eq 1 ]
 	done
 fi
 
+if [ $scanGenome -eq 2 ]
+        then
+	cp scanMotifsgenomewide.${1}_${2}.15000.sort.txt scanMotifsgenomewide.1.${num_lines}.sort.txt
+fi
 
 Rscript Step4_NegativeSet_1motif_TTtogether_update.R
 
