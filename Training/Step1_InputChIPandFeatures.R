@@ -19,7 +19,7 @@ library(GenomicRanges)
 colnames(bed) <- c('chr','start','end','id','score','strand') #score may be number of reads
 bed_Granges <- with(bed, GRanges(chr, IRanges(start,end), strand, score, id = id))
 bed_Granges <- reduce(bed_Granges)
-bed <- cbind(as.character(seqnames(bed_Granges)), start(bed_Granges), end(bed_Granges), paste0("peak",seq(1,length(bed_Granges),1)), "+")
+bed <- cbind(as.character(seqnames(bed_Granges)), start(bed_Granges), end(bed_Granges), paste0("peak",seq(1,length(bed_Granges),1)),0, "+")
 write.table(bed, "train_df.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
 
 pwm <- read.table(paste0("Motif_",motif,".txt"), sep = "\t", header = F, stringsAsFactors = FALSE)
