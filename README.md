@@ -2,8 +2,8 @@
 
 A data aggegation strategy to model specific transcriptional processes based on transcription factor and cell-state specificity. 
 
-## Preprint
-* [BioRXiv](https://www.biorxiv.org/content/early/2018/07/10/366864) 
+## Publication in American Journal of Human Genetics
+* [AJHG](https://www.cell.com/ajhg/supplemental/S0002-9297%2819%2930108-9) 
 
 ## Using IMPACT 
 
