@@ -1,8 +1,8 @@
 library(GenomicRanges)
 
-train_df <- read.table("/tiffany/IMPACT_manuscript/Training/train_df.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
-instances <- read.table("/tiffany/IMPACT_manuscript/Training/TFs.findinstances.txt", sep = "\t", header = T, stringsAsFactors = FALSE)
-MotifLibrary <- read.table("/tiffany/IMPACT_manuscript/Training/MotifThresholdList.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
+train_df <- read.table("Training/train_df.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
+instances <- read.table("Training/TFs.findinstances.txt", sep = "\t", header = T, stringsAsFactors = FALSE)
+MotifLibrary <- read.table("Training/MotifThresholdList.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
 
 colnames(train_df) <- c("seqnames","starts","ends","names","scores","strands")
 #select ChIP peaks with a matching motif under them.
@@ -63,7 +63,7 @@ w1 <- which(train_test_peaks$chr == "chrM")
 w2 <- which(nchar(train_test_peaks$chr) > 5)
 if (length(c(w1,w2)) > 0){train_test_peaks <- train_test_peaks[-c(w1,w2),]}
 
-write.table(train_test_peaks, "/tiffany/IMPACT_manuscript/Training/train_test_positive_bed.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
+write.table(train_test_peaks, "Training/train_test_positive_bed.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
 
 
 
