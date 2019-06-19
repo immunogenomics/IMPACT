@@ -1,12 +1,12 @@
 library(GenomicRanges)
 
-train_df_newpeaks <- read.table("/tiffany/IMPACT_manuscript/Training/train_df_newpeaks.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
+train_df_newpeaks <- read.table("train_df_newpeaks.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
 
-MotifThreshold <- read.table("/tiffany/IMPACT_manuscript/Training/MotifThresholdList.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
+MotifThreshold <- read.table("MotifThresholdList.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
 motifs <- MotifThreshold[1,1]
-instscan <- read.table("/tiffany/IMPACT_manuscript/Training/scanMotifsgenomewide.1.15000.sort.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
+instscan <- read.table("scanMotifsgenomewide.1.15000.sort.txt", sep = "\t", header = F, stringsAsFactors = FALSE)
 instscan <- instscan[order(instscan[,6], decreasing = T),]   
-bed <- read.table("/tiffany/IMPACT_manuscript/Training/train_df.txt", sep = "\t", header = F, stringsAsFactors = FALSE) #old version: ChIPbed1.txt
+bed <- read.table("train_df.txt", sep = "\t", header = F, stringsAsFactors = FALSE) #old version: ChIPbed1.txt
 colnames(bed) <- c('chr','start','end','id','score','strand') #score may be number of reads
 Granges <- with(bed, GRanges(chr, IRanges(start,end), strand, score, id = id))
 assign(paste0(motifs,"_Granges"),Granges)
@@ -67,7 +67,7 @@ print(paste0("working on ",motifmatrix[1,1]))
   }else{
     noChIP <- inst_bed
   }
-write.table(noChIP, "/tiffany/IMPACT_manuscript/Training/noChIP.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
+write.table(noChIP, "noChIP.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
 colnames(noChIP) <- c("seqnames","starts","ends","names","scores","strands")
 
 #shuffle 
@@ -88,7 +88,7 @@ w1 <- which(noChIP$chr == "chrM")
 w2 <- which(nchar(noChIP$chr) > 5)
 if (length(c(w1,w2)) > 0){noChIP <- noChIP[-c(w1,w2),]}
 
-write.table(noChIP, "/tiffany/IMPACT_manuscript/Training/train_test_negative_bed.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
+write.table(noChIP, "train_test_negative_bed.txt", sep = "\t", quote = F, row.names = FALSE, col.names = FALSE)
 
 
 
