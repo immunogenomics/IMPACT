@@ -25,7 +25,7 @@ if [ $makemotifs -eq 1 ]
 fi
 
 #homer find instances of motifs
-perl /data/srlab/amariuta/homer/bin/findMotifsGenome.pl train_df.txt hg19 homer_output/ -size given -find AllTFs_PWM.motif > TFs.findinstances.txt
+perl homer/bin/findMotifsGenome.pl train_df.txt hg19 homer_output/ -size given -find AllTFs_PWM.motif > TFs.findinstances.txt
 
 #build positive set
 #here, change training sample size
@@ -38,7 +38,7 @@ if [ $scanGenome -eq 1 ]
 	then
 	for i in $(seq 1 $num_motifs); 
 	do
-	perl /data/srlab/amariuta/homer/bin/scanMotifGenomeWide.pl TF.$i.PWM.motif hg19 > scanMotifsgenomewide.$i.txt
+	perl homer/bin/scanMotifGenomeWide.pl TF.$i.PWM.motif hg19 > scanMotifsgenomewide.$i.txt
 	sort -t $'\t' -k6,6rn scanMotifsgenomewide.$i.txt > scanMotifsgenomewide.$i.sort.txt	
 	head -n $num_lines scanMotifsgenomewide.$i.sort.txt > scanMotifsgenomewide.$i.$num_lines.sort.txt
 	done
