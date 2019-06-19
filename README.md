@@ -11,7 +11,7 @@ A data aggegation strategy to model specific transcriptional processes based on 
 ### Dependencies 
 
 1. A motif finding algorithm, such as HOMER as used in our implementation of IMPACT. 
-2. R version 3.2.2 
+2. R version 3.2.2 or higher
 3. R package GenomicRanges
 
 ### Data 
