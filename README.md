@@ -1,12 +1,14 @@
 # IMPACT (Inference and Modeling of Phenotype-related ACtive Transcription) 
 
-A data aggegation strategy to model specific transcriptional processes based on transcription factor and cell-state specificity. 
+A data aggregation strategy to model specific transcriptional processes based on transcription factor and cell-state specificity. 
 
 ## Publication in American Journal of Human Genetics
 * [AJHG](https://www.cell.com/ajhg/supplemental/S0002-9297%2819%2930108-9) 
 
 ## Preprint on bioRxiv 
 * [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.02.21.959510v1)
+
+```
 CAUTION: IMPACT707 annotations will hopefully be up soon. We ran into some space quotas from GitHub.
 
 ## Using IMPACT 
