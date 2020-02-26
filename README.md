@@ -8,8 +8,7 @@ A data aggregation strategy to model specific transcriptional processes based on
 ## Preprint on bioRxiv 
 * [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.02.21.959510v1)
 
-```
-CAUTION: IMPACT707 annotations will hopefully be up soon. We ran into some space quotas from GitHub.
+* CAUTION: IMPACT707 annotations will hopefully be up soon. We ran into some space quotas from GitHub.
 
 ## Using IMPACT 
 
