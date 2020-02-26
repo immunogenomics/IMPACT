@@ -1,0 +1,10 @@
+
+Because annotation files are very large, we have migrated all annotation files (*.annot.gz) to GitHub's LFS. 
+
+Cloning the repo is similar to before but requires one extra step. 
+
+git clone https://github.com/immunogenomics/IMPACT.git
+cd IMPACT 
+git lfs pull #~96Gb
+
+
