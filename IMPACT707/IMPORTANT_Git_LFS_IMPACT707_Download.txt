@@ -5,5 +5,5 @@ Cloning the repo is similar to before but requires one extra step.
 
 git clone https://github.com/immunogenomics/IMPACT.git
 cd IMPACT 
-git lfs pull
+git lfs pull #this will pull large LFS files separately: these include *.ldscore.gz and *.annot.gz
 
