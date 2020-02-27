@@ -7,6 +7,3 @@ git clone https://github.com/immunogenomics/IMPACT.git
 cd IMPACT 
 git lfs pull
 
-#At the moment (as of Feb 26, 4PM EST), we have removed all IMPACT707 annotations due to restrictions on GitHub space quotas. 
-#We hopefully will shortly be providing annotation files once this is sorted out. 
-#Thank you for your patience. 
