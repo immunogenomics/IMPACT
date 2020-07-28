@@ -80,7 +80,7 @@ for (tr in 1:length(traitnames)){
         
         if(nrow(ta_pth)>min_val){
           cormat_BetaCorr[j,k] <- cor(ta_pth$Beta_EUR, ta_pth$Beta_EAS)
-          cormat_se_BetaCorr[j,k] <- (cor.test(ta_pth$Beta_EUR, ta_pth$Beta_EAS)$conf.int[2] - cormat[j,1])/1.96
+          cormat_se_BetaCorr[j,k] <- (cor.test(ta_pth$Beta_EUR, ta_pth$Beta_EAS)$conf.int[2] - cormat_BetaCorr[j,k])/1.96
         }else{
           cormat_BetaCorr[j,k] <- NA
           cormat_se_BetaCorr[j,k] <- NA
@@ -102,7 +102,7 @@ for (tr in 1:length(traitnames)){
           cormat_se_2pqCorr[j,k] <- NA
         }else{
           cormat_2pqCorr[j,k] <- cor(eur_het, eas_het)
-          cormat_se_2pqCorr[j,k] <- (cor.test(eur_het, eas_het)$conf.int[2] - cormat[j,1])/1.96
+          cormat_se_2pqCorr[j,k] <- (cor.test(eur_het, eas_het)$conf.int[2] - cormat_2pqCorr[j,k])/1.96
         }
         
         #fst
@@ -122,5 +122,11 @@ for (tr in 1:length(traitnames)){
       }
     }
   }
+  myMAmat_BetaCorr[tr,] <- c(rev(cormat_BetaCorr[,1]),rev(cormat_BetaCorr[,2]),rev(cormat_BetaCorr[,3]))
+  myMAmat_se_BetaCorr[tr,] <- c(rev(cormat_se_BetaCorr[,1]),rev(cormat_se_BetaCorr[,2]),rev(cormat_se_BetaCorr[,3]))
+  myMAmat_2pqCorr[tr,] <- c(rev(cormat_2pqCorr[,1]),rev(cormat_2pqCorr[,2]),rev(cormat_2pqCorr[,3]))
+  myMAmat_se_2pqCorr[tr,] <- c(rev(cormat_se_2pqCorr[,1]),rev(cormat_se_2pqCorr[,2]),rev(cormat_se_2pqCorr[,3]))
+  myMAmat_Fst[tr,] <- c(rev(cormat_Fst[,1]),rev(cormat_Fst[,2]),rev(cormat_Fst[,3]))
+  myMAmat_se_Fst[tr,] <- c(rev(cormat_se_Fst[,1]),rev(cormat_se_Fst[,2]),rev(cormat_se_Fst[,3]))
 }
 
