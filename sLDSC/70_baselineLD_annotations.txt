@@ -21,7 +21,8 @@ H3K27ac_PGC2
 H3K27ac_PGC2.extend.500
 H3K4me1_peaks_Trynka
 H3K4me1_Trynka
-H3K4me1_Trynka.extend.50H3K4me3_peaks_Trynka
+H3K4me1_Trynka.extend.500
+H3K4me3_peaks_Trynka
 H3K4me3_Trynka
 H3K4me3_Trynka.extend.500
 H3K9ac_peaks_Trynka
