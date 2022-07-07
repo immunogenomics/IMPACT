@@ -2,10 +2,10 @@
 
 A data aggregation strategy to model specific transcriptional processes based on transcription factor and cell-state specificity. 
 
-## Publication in American Journal of Human Genetics
+## Publication in American Journal of Human Genetics: IMPACT: Genomic Annotation of Cell-State-Specific Regulatory Elements Inferred from the Epigenome of Bound Transcription Factors
 * [AJHG](https://www.cell.com/ajhg/supplemental/S0002-9297%2819%2930108-9) 
 
-## Publication in Nature Genetics 
+## Publication in Nature Genetics: Improving the trans-ancestry portability of polygenic risk scores by prioritizing variants in predicted cell-type-specific regulatory elements
 * [Nature Genetics](https://www.nature.com/articles/s41588-020-00740-8)
 
 ## Using IMPACT 
