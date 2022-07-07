@@ -5,8 +5,8 @@ A data aggregation strategy to model specific transcriptional processes based on
 ## Publication in American Journal of Human Genetics
 * [AJHG](https://www.cell.com/ajhg/supplemental/S0002-9297%2819%2930108-9) 
 
-## New preprint on bioRxiv (IMPACT707 + trans-ethnic PRS)
-* [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.02.21.959510v1)
+## Publication in Nature Genetics 
+* [Nature Genetics](https://www.nature.com/articles/s41588-020-00740-8)
 
 ## Using IMPACT 
 
